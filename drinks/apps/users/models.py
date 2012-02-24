@@ -27,10 +27,17 @@ class Profile(models.Model):
 
         return int(base + exercise)
 
+    def __unicode__(self):
+        'unicode representation of this Profile'
+        return u'Profile for %s' % self.user
+
 
 def create_user_profile(sender, instance, created, **kwargs):
     'create a user profile'
     if created:
         Profile.objects.create(user=instance)
 
-post_save.connect(create_user_profile, sender=User)
+post_save.connect(
+    create_user_profile, sender=User,
+    dispatch_uid='profile_create_on_user'
+)
