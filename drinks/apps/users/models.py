@@ -9,7 +9,8 @@ class Profile(models.Model):
     user = models.OneToOneField(User)
 
     weight = models.PositiveIntegerField(
-        help_text='Your weight, in lbs.'
+        help_text='Your weight, in lbs.',
+        default=140,
     )
     exercise = models.PositiveIntegerField(
         help_text='Avg. minutes of exercise, per day',
