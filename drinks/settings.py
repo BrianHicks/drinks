@@ -109,6 +109,7 @@ INSTALLED_APPS = (
 
     # local apps
     'apps.users',
+    'apps.fluids',
 
     # third-party
     'gunicorn',
