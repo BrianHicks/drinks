@@ -108,11 +108,14 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     # local apps
+    'apps.users',
 
     # third-party
     'gunicorn',
     'south',
 )
+
+AUTH_PROFILE_MODULE = 'apps.users.Profile'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
