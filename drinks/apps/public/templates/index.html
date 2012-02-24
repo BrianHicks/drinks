@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for drink in drinks %}
+<ul>
+    <li>{{ drink.when }}: {{ drink.amount }}oz of {{ drink.kind }}</li>
+</ul>
+{% endfor %}
+{% endblock %}
