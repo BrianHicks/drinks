@@ -3,8 +3,7 @@ from datetime import datetime, timedelta
 
 from django.views.generic.base import View, TemplateResponseMixin
 
-#from drinks.apps.users.models import Profile
-from drinks.apps.fluids.models import Drink
+from drinks.apps.users.models import Profile
 
 
 class RootView(View, TemplateResponseMixin):
@@ -14,7 +13,5 @@ class RootView(View, TemplateResponseMixin):
     def get(self, request):
         'handle GET'
         return self.render_to_response({
-            'drinks': Drink.objects.filter(
-                when__gte=datetime.now() - timedelta(hours=8)
-            )
+            'profiles': Profile.objects.all()
         })
