@@ -12,8 +12,19 @@ class Profile(models.Model):
         help_text='Your weight, in lbs.'
     )
     exercise = models.PositiveIntegerField(
-        help_text='Avg. minutes of exercise, per day'
+        help_text='Avg. minutes of exercise, per day',
+        default=0,
     )
+
+    def get_water_needed(self):
+        'get amount of water in ounces needed per day'
+        # weight
+        base = float(self.weight) * (2.0 / 3.0)
+
+        # exercise
+        excercise += 12 * (float(self.exercise) / 30)
+
+        return int(base + exercise)
 
 
 def create_user_profile(sender, instance, created, **kwargs):
