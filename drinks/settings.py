@@ -108,8 +108,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     # local apps
-    'apps.users',
     'apps.fluids',
+    'apps.public',
+    'apps.users',
 
     # third-party
     'gunicorn',
