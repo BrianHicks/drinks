@@ -36,7 +36,7 @@ class Profile(models.Model):
             when__gt=datetime.now() - timedelta(hours=24)
         ).aggregate(models.Sum('amount'))['amount__sum']
 
-        return (float(consumed) / total) * 100
+        return float(consumed) / total
 
     def __unicode__(self):
         'unicode representation of this Profile'

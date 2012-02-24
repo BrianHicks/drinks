@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
+{% load percent %}
 
 {% block content %}
 {% for profile in profiles %}
 <p>
-    {{ profile.user.first_name }} is {{ profile.percent_hydrated }} hydrated.
+    {{ profile.user.first_name }} is {{ profile.percent_hydrated|percentage }} hydrated.
     Whoo.
 </p>
 <p>Recent drinks:</p>
