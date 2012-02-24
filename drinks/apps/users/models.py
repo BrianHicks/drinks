@@ -1,4 +1,6 @@
 "user models"
+from datetime import datetime, timedelta
+
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
@@ -23,9 +25,18 @@ class Profile(models.Model):
         base = float(self.weight) * (2.0 / 3.0)
 
         # exercise
-        excercise += 12 * (float(self.exercise) / 30)
+        exercise = 12 * (float(self.exercise) / 30)
 
         return int(base + exercise)
+
+    def percent_hydrated(self):
+        'get percent hydrated'
+        total = self.get_water_needed()
+        consumed = self.drinks.filter(
+            when__gt=datetime.now() - timedelta(hours=24)
+        ).aggregate(models.Sum('amount'))['amount__sum']
+
+        return float(consumed) / total
 
     def __unicode__(self):
         'unicode representation of this Profile'

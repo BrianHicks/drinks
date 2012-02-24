@@ -4,7 +4,10 @@ from django.db import models
 
 class Drink(models.Model):
     'a single drink (drink, whatever)'
-    profile = models.ForeignKey('users.Profile')
+    profile = models.ForeignKey(
+        'users.Profile',
+        related_name='drinks'
+    )
 
     amount = models.PositiveIntegerField(
         help_text='Fluid amount, in oz.'

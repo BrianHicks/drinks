@@ -1,9 +1,17 @@
 {% extends 'base.html' %}
+{% load percent %}
 
 {% block content %}
-{% for drink in drinks %}
+{% for profile in profiles %}
+<p>
+    {{ profile.user.first_name }} is {{ profile.percent_hydrated|percentage }} hydrated.
+    Whoo.
+</p>
+<p>Recent drinks:</p>
 <ul>
+    {% for drink in profile.drinks.all %}
     <li>{{ drink.when }}: {{ drink.amount }}oz of {{ drink.kind }}</li>
+    {% endfor %}
 </ul>
 {% endfor %}
 {% endblock %}
