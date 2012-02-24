@@ -4,6 +4,7 @@ from django import template
 register = template.Library()
 
 
-@register.filter
+@register.filter(is_safe=True)
 def percentage(num):
-    return '%.2f%%' % (num * 100)
+    return num
+    #return '%.2f%%' % (num * 100) # broken for now
