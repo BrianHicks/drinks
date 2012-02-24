@@ -33,11 +33,10 @@ class Profile(models.Model):
         'get percent hydrated'
         total = self.get_water_needed()
         consumed = self.drinks.filter(
-            profile=self,
             when__gt=datetime.now() - timedelta(hours=24)
         ).aggregate(models.Sum('amount'))['amount__sum']
 
-        return float(consumed) / total
+        return (float(consumed) / total) * 100
 
     def __unicode__(self):
         'unicode representation of this Profile'
